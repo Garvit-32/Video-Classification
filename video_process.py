@@ -1,4 +1,3 @@
-import av
 import glob
 import os
 import time
@@ -7,10 +6,16 @@ import datetime
 import cv2
 import numpy as np
 
-data_path = 'data'
-res_path = 'res'
+try:
+    import av
+except ModuleNotFoundError:
+    os.system('!pip install av')
+    import av
 
-seq_length = 16
+# data_path = 'data'
+# res_path = 'res'
+
+# seq_length = 16
 
 
 def extract_frame(video_path):
@@ -25,6 +30,7 @@ def create_frame(data, res):
         p1 = os.path.join(data, i)
         r1 = os.path.join(res, i)
         os.makedirs(r1, exist_ok=True)
+        print(f'Extract frame from {p1}')
         for j in tqdm(os.listdir(p1)):
             vid_path = os.path.join(p1, j)
             r2 = os.path.join(r1, j[:-11])
@@ -36,12 +42,15 @@ def create_frame(data, res):
 # create_frame(data_path, res_path)
 
 
-def preprocess_data(seq_length, data, res):
-    dir = os.listdir(data)
+def preprocess_data(seq_length, data, frame_path, res):
+    create_frame(data, frame_path)
+
+    dir = os.listdir(frame_path)
     for i in dir:
-        p1 = os.path.join(data, i)
+        p1 = os.path.join(frame_path, i)
         r1 = os.path.join(res, i)
         os.makedirs(r1, exist_ok=True)
+        print(f'Extract required number of frame from {p1} directory')
         for j in tqdm(os.listdir(p1)):
             p2 = os.path.join(p1, j)
             r2 = os.path.join(r1, j)
@@ -64,7 +73,8 @@ def preprocess_data(seq_length, data, res):
                 l += 1
 
 
-data = 'res'
+data = 'data'
+frame_path = 'frame'
 res = 'dataset'
-
-preprocess_data(seq_length, data, res)
+seq_length = 16
+preprocess_data(seq_length, data, frame_path, res)
