@@ -22,14 +22,6 @@ data_path = 'dataset'
 
 classes = os.listdir(data_path)
 
-decoder = {}
-
-for i in range(len(classes)):
-    decoder[classes[i]] = i
-
-encoder = {}
-for i in range(len(classes)):
-    encoder[i] = classes[i]
 
 id = list()
 
