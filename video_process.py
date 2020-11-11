@@ -42,7 +42,7 @@ def create_frame(data, res):
 # create_frame(data_path, res_path)
 
 
-def preprocess_data(seq_length=16, data, frame_path, res):
+def preprocess_data(data, frame_path, res, seq_length=16):
     create_frame(data, frame_path)
 
     dir = os.listdir(frame_path)
@@ -77,4 +77,4 @@ def preprocess_data(seq_length=16, data, frame_path, res):
 # frame_path = 'frame'
 # res = 'dataset'
 # seq_length = 16
-# preprocess_data(seq_length, data, frame_path, res)
+# preprocess_data(data, frame_path, res)
