@@ -60,7 +60,7 @@ def preprocess_data(data, frame_path, res, seq_length=16):
             while(l != seq_length):
                 p3 = os.path.join(p2, str(k)+'.jpg')
                 try:
-                    img = cv2.imread(p3, cv2.IMREAD_GRAYSCALE)
+                    img = cv2.imread(p3)
                     img = cv2.resize(img, (128, 128))
                     cv2.imwrite(r2 + str(k) + '.jpg', img)
                 except:
