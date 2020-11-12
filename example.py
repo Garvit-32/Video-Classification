@@ -1,4 +1,3 @@
-from clr import *
 from torchsummary import summary
 from model import classifier
 from utils import class_plot
@@ -75,7 +74,6 @@ criterion = nn.CrossEntropyLoss().to('cuda')
 optimizer = torch.optim.SGD(
     model.parameters(), lr=1e-3, momentum=0.9, weight_decay=1e-4)
 num_epochs = 20
-onecyc = OneCycle(len(train_loader)*num_epochs, 1e-3)
 
 
 for epoch in range(num_epochs):
@@ -98,10 +96,6 @@ for epoch in range(num_epochs):
             optimizer.step()
             epoch_metrics["loss"].append(loss.item())
             epoch_metrics["acc"].append(acc)
-            if(phase == 'train'):
-                lr, mom = onecyc.calc()
-                update_lr(optimizer, lr)
-                update_mom(optimizer, mom)
             sys.stdout.write(
                 "\r[Epoch %d/%d] [Batch %d/%d] [Loss: %f (%f), Acc: %.2f%% (%.2f%%)]"
                 % (
