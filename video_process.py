@@ -1,7 +1,7 @@
 import glob
 import os
 import time
-from tqdm import tqdm
+from tqdm.autonotebook import tqdm
 import datetime
 import cv2
 import numpy as np

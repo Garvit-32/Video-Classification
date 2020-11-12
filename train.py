@@ -14,7 +14,6 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 import torch.optim as optim
 from torch.utils.data import DataLoader, Dataset
-from torchvision import transforms
 import sys
 
 
@@ -23,13 +22,13 @@ data_path = 'dataset'
 classes = os.listdir(data_path)
 
 
-id = list()
+# id = list()
 
-for i in os.listdir(data_path):
-    p1 = os.path.join(data_path, i)
-    for j in os.listdir(p1):
-        p2 = os.path.join(p1, j)
-        id.append((i, p2))
+# for i in os.listdir(data_path):
+#     p1 = os.path.join(data_path, i)
+#     for j in os.listdir(p1):
+#         p2 = os.path.join(p1, j)
+#         id.append((i, p2))
 
 
 # class VideoDataset(Dataset):
