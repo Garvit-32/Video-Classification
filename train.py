@@ -32,28 +32,27 @@ for i in os.listdir(data_path):
         id.append((i, p2))
 
 
-class VideoDataset(Dataset):
+# class VideoDataset(Dataset):
 
-    def __init__(self, frame_list=id, sequence_length=16, transform=None):
-        self.frame_list = frame_list
-        self.sequence_length = sequence_length
-        self.transform = transform
+#     def __init__(self, frame_list=id, sequence_length=16, transform=None):
+#         self.frame_list = frame_list
+#         self.sequence_length = sequence_length
+#         self.transform = transform
 
-    def __len__(self):
-        return len(self.frame_list)
+#     def __len__(self):
+#         return len(self.frame_list)
 
-    def __getitem__(self, idx):
-        label, path = self.frame_list[idx]
-        img = cv2.imread(path)
-        seq_img = list()
-        for i in range(self.sequence_length):
-            img1 = img[:, 128*i:128*(i+1), :]
-            if(self.transform):
-                img1 = self.transform(img1)
-            seq_img.append(img1)
-        seq_image = torch.stack(seq_img)
-        seq_image = seq_image.reshape(3, 16, im_size, im_size)
-        return seq_image, decoder[label]
+#     def __getitem__(self, idx):
+#         label, path = self.frame_list[idx]
+#         img = cv2.imread(path)
+#         for i in range(self.sequence_length):
+#             img1 = img[:, 128*i:128*(i+1), :]
+#             if(self.transform):
+#                 img1 = self.transform(img1)
+#             seq_img.append(img1)
+#         seq_image = torch.stack(seq_img)
+#         seq_image = seq_image.reshape(3, 16, im_size, im_size)
+#         return seq_image, decoder[label]
 
 
 # x = VideoDataset().__getitem__(5)

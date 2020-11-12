@@ -26,7 +26,7 @@ def extract_frame(video_path):
 
 
 def create_frame(data, res):
-    for i in tqdm(os.listdir(data)):
+    for i in os.listdir(data):
         p1 = os.path.join(data, i)
         r1 = os.path.join(res, i)
         os.makedirs(r1, exist_ok=True)
