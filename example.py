@@ -80,7 +80,7 @@ onecyc = OneCycle(len(train_loader)*num_epochs, 1e-3)
 
 for epoch in range(num_epochs):
     print('')
-    print(f"--- Epoch {epoch} ---")
+    print(f"--- Epoch {epoch+1} ---")
     phase1 = dataloaders.keys()
     for phase in phase1:
         print('')
@@ -105,7 +105,7 @@ for epoch in range(num_epochs):
             sys.stdout.write(
                 "\r[Epoch %d/%d] [Batch %d/%d] [Loss: %f (%f), Acc: %.2f%% (%.2f%%)]"
                 % (
-                    epoch,
+                    epoch + 1,
                     num_epochs,
                     batch_i,
                     len(dataloaders[phase]),
