@@ -52,3 +52,21 @@ def class_plot(data, encoder, inv_normalize=None, n_figures=12):
         ax.set_title(l)
         ax.axis('off')
     plt.show()
+
+
+def error_plot(loss):
+    plt.figure(figsize=(10, 5))
+    plt.plot(loss)
+    plt.title("Training loss plot")
+    plt.xlabel("epochs")
+    plt.ylabel("Loss")
+    plt.show()
+
+
+def acc_plot(acc):
+    plt.figure(figsize=(10, 5))
+    plt.plot(acc)
+    plt.title("Training accuracy plot")
+    plt.xlabel("epochs")
+    plt.ylabel("accuracy")
+    plt.show()
